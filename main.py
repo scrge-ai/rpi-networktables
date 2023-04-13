@@ -1,3 +1,5 @@
+# ROBOT IP: 10.0.8.2
+
 # This is a NetworkTables client (eg, the DriverStation/coprocessor side).
 # You need to tell it the IP address of the NetworkTables server (the
 # robot or simulator).
