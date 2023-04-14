@@ -1,14 +1,5 @@
 # ROBOT IP: 10.0.8.2
 
-# This is a NetworkTables client (eg, the DriverStation/coprocessor side).
-# You need to tell it the IP address of the NetworkTables server (the
-# robot or simulator).
-#
-# This shows how to use a listener to listen for changes in NetworkTables
-# values. This will print out any changes detected on the SmartDashboard
-# table.
-#
-
 import sys
 import time
 from networktables import NetworkTables
@@ -27,18 +18,11 @@ ip = sys.argv[1]
 NetworkTables.initialize(server=ip)
 
 
-def valueChanged(table, key, value, isNew):
+def valueChanged(key, value, isNew):
     print("valueChanged: key: '%s'; value: %s; isNew: %s" % (key, value, isNew))
 
 
-def connectionListener(connected, info):
-    print(info, "; Connected=%s" % connected)
-
-
-NetworkTables.addConnectionListener(connectionListener, immediateNotify=True)
-
-sd = NetworkTables.getTable("SmartDashboard")
-sd.addEntryListener(valueChanged)
+NetworkTables.addEntryListener(valueChanged)
 
 while True:
     time.sleep(1)
