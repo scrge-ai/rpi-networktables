@@ -22,7 +22,10 @@ def valueChanged(key, value, isNew):
     print("valueChanged: key: '%s'; value: %s; isNew: %s" % (key, value, isNew))
 
 
-NetworkTables.addEntryListener(valueChanged)
+#NetworkTables.addEntryListener(valueChanged)
+NetworkTables.initialize(server=ip)
+table = NetworkTables.getTable("testTable")
+#robotTime = table.getNumber("test", 0)
 
 while True:
-    time.sleep(1)
+    print(table.getNumber("test", 0))
